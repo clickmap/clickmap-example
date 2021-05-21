@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <!-- <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script> -->
+    <script>
+      // const socket = io("http://localhost");
+      document.addEventListener('click', async (e) => {
+        try {
+          const result = await fetch('http://localhost:3000/enqueue', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              screenX: e.screenX,
+              screenY: e.screenY,
+              clientX: e.clientX,
+              clientY: e.clientY,
+            }),
+          })
+        } catch(error) {
+          console.log(error)
+        }
+      })
+    </script>
+    <style>
+      .test-btn {
+        border: none;
+        background-color: dodgerblue;
+        color: white;
+        margin: 10px;
+        padding: 10px 20px;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>ClickMap example code</h1>
+    <button class="test-btn">Button One</button>
+    <button class="test-btn">Button Two</button>
+  </body>
+</html>
